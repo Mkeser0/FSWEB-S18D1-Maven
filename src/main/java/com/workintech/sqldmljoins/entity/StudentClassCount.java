@@ -12,5 +12,5 @@ import jakarta.persistence.SqlResultSetMapping;
                 @ColumnResult(name = "count")}))
 public interface StudentClassCount {
     String getSinif();
-    int getCount();
+    Integer getCount();
 }

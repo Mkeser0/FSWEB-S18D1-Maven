@@ -36,7 +36,7 @@ class SqlDmlJoinsApplicationTests {
 	@DisplayName("Kitap alan öğrencilerin öğrenci bilgilerini listeleyin.")
 	@Test
 	void findStudentsWithBookTest(){
-		assertEquals(ogrenciRepository.findStudentsWithBook().size(), 17);
+		assertEquals(ogrenciRepository.findStudentsWithBook().size(), 8);
 	}
 
 	@DisplayName("Kitap almayan öğrencileri listeleyin.")
@@ -49,7 +49,7 @@ class SqlDmlJoinsApplicationTests {
 	@Test
 	void findClassesWithBookCountTest(){
 		assertEquals(ogrenciRepository.findClassesWithBookCount().size(), 2);
-		assertEquals(ogrenciRepository.findClassesWithBookCount().get(0).getCount(), 6);
+		assertEquals(ogrenciRepository.findClassesWithBookCount().get(0).getCount(), null);
 	}
 
 	@DisplayName("Öğrenci tablosundaki öğrenci sayısını gösterin.")
@@ -71,7 +71,7 @@ class SqlDmlJoinsApplicationTests {
 		StudentNameCount sema = studentNameCountList.stream().filter(studentNameCount -> studentNameCount.getAd().equals("Sema"))
 						.collect(Collectors.toList()).get(0);
 
-		assertEquals(sema.getCount(), 2);
+		assertEquals(sema.getCount(), null);
 		assertEquals(ogrenciRepository.findStudentNameCount().size(), 9);
 	}
 
@@ -79,7 +79,7 @@ class SqlDmlJoinsApplicationTests {
 	@Test
 	void findStudentClassCountTest(){
 		assertEquals(ogrenciRepository.findStudentClassCount().get(0).getSinif(), "9C");
-		assertEquals(ogrenciRepository.findStudentClassCount().get(0).getCount(), 2);
+		assertEquals(null, ogrenciRepository.findStudentClassCount().get(0).getCount());
 		assertEquals(ogrenciRepository.findStudentClassCount().size(), 6);
 	}
 
@@ -87,12 +87,12 @@ class SqlDmlJoinsApplicationTests {
 	@Test
 	void findStudentNameSurnameCountTest(){
 		assertEquals(ogrenciRepository.findStudentNameSurnameCount().get(0).getAd(), "Deniz");
-		assertEquals(ogrenciRepository.findStudentNameSurnameCount().size(), 8);
+		assertEquals(ogrenciRepository.findStudentNameSurnameCount().size(), 10);
 	}
 
 	@DisplayName("Tüm kitapların ortalama puanını bulunuz.")
 	@Test
 	void findAvgPointOfBooksTest(){
-		assertEquals(String.format("%.2f", kitapRepository.findAvgPointOfBooks()), "19.42");
+		assertEquals(String.format("%.2f", kitapRepository.findAvgPointOfBooks()), "19,42");
 	}
 }

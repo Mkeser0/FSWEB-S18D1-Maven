@@ -13,5 +13,5 @@ import jakarta.persistence.*;
                 @ColumnResult(name = "count")}))
 public interface KitapCount {
     String getSinif();
-    int getCount();
+    Integer getCount();
 }
