@@ -16,5 +16,5 @@ import jakarta.persistence.SqlResultSetMapping;
 public interface StudentNameSurnameCount {
     String getAd();
     String getSoyad();
-    int getCount();
+    Integer getCount();
 }
